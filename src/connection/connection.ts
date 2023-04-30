@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
 import { Videogame } from "../models/Videogame";
+import { Types } from "../models/ExampleTypes" //Esta linea es parte del ejemplo para carga masiva
 
 
 
@@ -9,11 +10,12 @@ export const connection = new Sequelize(
     dialect: 'postgres',
     host: "localhost",
     username: "postgres",
-    password: "mia081013",
+    password: "noesmentira1986",
     database: "gameshop",
     logging: false,
     models: [
-        Videogame
+        Videogame,
+        Types //Esta linea es parte del ejemplo para carga masiva
     ]
 })
 

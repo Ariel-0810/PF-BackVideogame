@@ -1,9 +1,8 @@
 import { Router } from "express";
 // import { Genre } from "../db";
 // import { ModelCtor, Model } from "sequelize";
-import getVideoGames from "../controllers/getVideoGames.controller";
-import postVideoGames from "../controllers/postVideoGames.controlle";
-import deleteVideoGames from "../controllers/deleteVideogame.controller";
+import {getVideoGames, postVideoGames, deleteVideoGames } from "../controllers/videoGames.controller"; //Aquí queda todo en uno ya modularizado
+import {getPostTypesIntoDBHandlers} from "../controllers/dataBulkLoad" //Esta línea es parte del ejemplo para carga masiva
 // import  getVideoGamesId from "../controllers/getVideoGamesId.controller";
 // import getVideoGamesQuery from "../controllers/getVideoGamesQuery.controller";
 // import createVideoGame from "../controllers/postVideoGames.controlle";
@@ -14,6 +13,8 @@ const Videosrouter = Router();
 Videosrouter.get("/allvideogames", getVideoGames);
 
 Videosrouter.post("/postvideogames", postVideoGames);
+
+Videosrouter.post("/postvideogamesAPI", getPostTypesIntoDBHandlers); //Esta línea es parte del ejemplo para carga masiva
 
 Videosrouter.delete("/deletevideogames/:id", deleteVideoGames);
 // router.get("/videogames", async (req, res) => {
