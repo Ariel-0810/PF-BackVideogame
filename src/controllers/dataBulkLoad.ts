@@ -1,30 +1,64 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import { Request, Response } from 'express';
-import { Types } from "../models/ExampleTypes";
+import { Videogame } from '../models/Videogame';
 
-const getTypesAPI = async (): Promise<string[]> => {
-  let responseAPI: AxiosResponse = await axios.get("https://pokeapi.co/api/v2/type");
-  const dataTypes: string[] = await responseAPI.data.results.map((e: { name: string }) => e.name);
-  return dataTypes;
-};
+interface Platform {
+  platform: { id:number, name:string, slug:string, image:string | null, year_end: string | null, year_start: string | null, games_count: number,  image_background: string};
+  released_at: string;
+  requirements_en: {
+    minimum: string;
+    recommended: string;
+  } | null;  
+}
+
+interface Genre {
+  id:number,
+  name:string,
+  slug:string,
+  games_count: number,
+  image_background: string  
+}
+
+interface Game {
+  id: number;
+  name: string;
+  released: Date;
+  platforms: Platform[];
+  genres: Genre[];
+  background_image: string;
+  rating_top: number;
+}
 
 
+export const createBulkDB = async (req: Request, res: Response) => {
+  try {
+    const response = await axios.get(
+      "https://api.rawg.io/api/games?page_size=10&key=6df927ecdff443ffa74507df2223a6ad&page_size=40"
+    );
+    const games: Game[] = response.data.results;
 
-const getPostTypesIntoDBHandlers = async (req: Request, res: Response): Promise<void> => {
-    try {
-      const responseAPI = await getTypesAPI();
-      console.log(responseAPI)
-      responseAPI.forEach(e => {
-        Types.findOrCreate({
-          where: { name: e }
-        })
+    const promises = games.map(async (game: any) => {
+      const videogame: Videogame | null = await Videogame.findOne({
+        where: { name: game.name },
       });
-      const pokemonTypes = await Types.findAll();
-      res.send(pokemonTypes)
-    } catch (error) {
-      res.status(400).send(error);
-    }
-  };
-  
+      // const requirements  =
+      //   videogame && videogame.platforms
+      //     ? videogame.platforms[3].requirements_en
+      //     : null;
+      // const minimum = requirements ? requirements.minimum : null;
+      // const recommended = requirements ? requirements.recommended : null;
+      //     console.log(requirements);
+          
+      const { id, name, released, background_image, rating_top } = game;
+      return { id, name, released, background_image, rating_top };
+    });
 
-export { getTypesAPI, getPostTypesIntoDBHandlers  };
+    const createdGames = await Promise.all(promises);
+    const filteredGames = createdGames.filter((game) => game !== null);    
+    const savedGames = await Videogame.bulkCreate(filteredGames);
+
+    return res.status(200).json(savedGames);
+  } catch (error) {
+    return res.status(500).json({ message: "Error interno del servidor" });
+  }
+};
