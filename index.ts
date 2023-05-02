@@ -19,12 +19,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 import server from "./src/app";
+import { conection } from "./src/db";
 
  const port = process.env.PORT || 3001;
 
- server.listen(server.get("port"))
+conection.conn.sync({ alter: true }).then(()=> {
+ server.listen(port, ()=> {
       console.log('%s listening at ' + port); // eslint-disable-line no-console
-
-
-
+ })
+})
 
