@@ -1,5 +1,4 @@
-import { Table, Model, Column, DataType, BelongsToMany } from "sequelize-typescript";
-import { Videogame } from "./Videogame";
+import { Table, Model, Column, DataType } from "sequelize-typescript";
 
 
 
@@ -21,11 +20,8 @@ id!: number;
     allowNull: false,
   })
   name!: string;
+  
 }
-
-  Genre.belongsToMany(Videogame, {
-    through: "videogame_genre",
-  }); 
 
 
   

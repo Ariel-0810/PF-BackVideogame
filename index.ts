@@ -19,13 +19,12 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 import server from "./src/app";
-// // // import {sequelize}  from './src/db';
-// // import  connectionDB  from './src/connection/connection';
 
  const port = process.env.PORT || 3001;
 
  server.listen(server.get("port"))
-// // server.listen(port, () => {
       console.log('%s listening at ' + port); // eslint-disable-line no-console
-// //     });
+
+
+
 

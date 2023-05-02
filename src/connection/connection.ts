@@ -1,30 +1,29 @@
 import { Sequelize } from "sequelize-typescript";
-import { Videogame } from "../models/Videogame";
-import { Types } from "../models/ExampleTypes" //Esta linea es parte del ejemplo para carga masiva
+import {Videogame}  from "../models/Videogame";
+import  {Genre}  from "../models/Genre";
 
 
 
 export const connection = new Sequelize(
-    // 'postgres://postgres:mia081013@localhost:5432/gameshop',
 {
     dialect: 'postgres',
     host: "localhost",
     username: "postgres",
-    password: "noesmentira1986",
+    password: "mia081013",
     database: "gameshop",
     logging: false,
     models: [
         Videogame,
-        Types //Esta linea es parte del ejemplo para carga masiva
+        Genre, 
     ]
-})
+}
+)
 
 async function connectionDB() {
     try {
-        await connection.sync()
+        await connection.sync( { alter: true } )
     } catch (error) {
-        console.log((error));
-        
+        console.log((error));        
     }
 }
 
