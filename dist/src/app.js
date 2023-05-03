@@ -44,3 +44,4 @@ server.get("/", (req, res) => {
 //-- videogames
 server.use("/api", videogames_routes_1.default);
 exports.default = server;
+//# sourceMappingURL=app.js.map

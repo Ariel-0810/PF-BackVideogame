@@ -21,3 +21,4 @@ router.post("/postNewGame", validate, videoGames_controller_1.postNewGame);
 router.delete("/deleteGame/", videoGames_controller_1.deleteGame);
 router.delete("/deleteGame/:id", videoGames_controller_1.deleteGame);
 exports.default = router;
+//# sourceMappingURL=videogames.routes.js.map

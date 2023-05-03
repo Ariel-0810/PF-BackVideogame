@@ -96,3 +96,4 @@ exports.loadApiEndpoints = loadApiEndpoints;
 //       console.error('Error al crear los videojuegos', error);
 //     }
 //   };
+//# sourceMappingURL=comparacion.js.map

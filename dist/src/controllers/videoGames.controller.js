@@ -78,3 +78,4 @@ const deleteGame = async (req, res) => {
     }
 };
 exports.deleteGame = deleteGame;
+//# sourceMappingURL=videoGames.controller.js.map

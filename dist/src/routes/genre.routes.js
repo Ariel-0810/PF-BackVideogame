@@ -13,3 +13,4 @@
 // }
 // });
 // export default router;
+//# sourceMappingURL=genre.routes.js.map

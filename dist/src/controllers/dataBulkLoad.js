@@ -34,3 +34,4 @@ const createBulkDB = async (req, res) => {
     }
 };
 exports.createBulkDB = createBulkDB;
+//# sourceMappingURL=dataBulkLoad.js.map

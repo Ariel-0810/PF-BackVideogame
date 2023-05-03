@@ -52,3 +52,4 @@ Videogame = __decorate([
     })
 ], Videogame);
 exports.Videogame = Videogame;
+//# sourceMappingURL=Videogame.js.map

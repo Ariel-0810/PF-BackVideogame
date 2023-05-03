@@ -4,3 +4,4 @@
 // return getGenreList;
 // };
 // export default getGenre;
+//# sourceMappingURL=getGenre.controller.js.map

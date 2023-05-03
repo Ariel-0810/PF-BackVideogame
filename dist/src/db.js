@@ -49,3 +49,4 @@ const { Videogame, Genre } = exports.sequelize.models;
 Videogame.belongsToMany(Genre, { through: 'Videogame_Genre' });
 Genre.belongsToMany(Videogame, { through: 'Videogame_Genre' });
 exports.conection = Object.assign(Object.assign({}, exports.sequelize.models), { conn: exports.sequelize });
+//# sourceMappingURL=db.js.map

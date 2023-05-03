@@ -30,3 +30,4 @@ db_1.conection.conn.sync({ alter: true }).then(() => {
         console.log('%s listening at ' + port); // eslint-disable-line no-console
     });
 });
+//# sourceMappingURL=index.js.map

@@ -4,3 +4,4 @@
 // return newData;
 // };
 // export default addGenresDb;
+//# sourceMappingURL=AddGenresDb.controller.js.map
