@@ -8,7 +8,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
-const index_1 = __importDefault(require("../src/routes/index"));
+// const index_1 = __importDefault(require("../src/routes/index"));
 require("./db.js");
 const server = (0, express_1.default)();
 server.locals.name = 'API';
@@ -24,7 +24,7 @@ server.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
-server.use('/', index_1.default);
+// server.use('/', index_1.default);
 server.use(express_1.default.json());
 server.use((err, req, res, next) => {
     const status = err.status || 500;
