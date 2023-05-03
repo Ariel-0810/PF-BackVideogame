@@ -1,27 +1,22 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.connection = void 0;
-const sequelize_typescript_1 = require("sequelize-typescript");
-const Videogame_1 = require("../models/Videogame");
-const Genre_1 = require("../models/Genre");
-exports.connection = new sequelize_typescript_1.Sequelize({
-    dialect: 'postgres',
-    host: "localhost",
-    username: "postgres",
-    password: "mia081013",
-    database: "gameshop",
-    logging: false,
-    models: [
-        Videogame_1.Videogame,
-        Genre_1.Genre,
-    ]
-});
-async function connectionDB() {
-    try {
-        await exports.connection.sync({ alter: true });
-    }
-    catch (error) {
-        console.log((error));
-    }
-}
-exports.default = connectionDB;
+// import { Sequelize } from "sequelize-typescript";
+// import {Videogame}  from "../models/Videogame";
+// import  {Genre}  from "../models/Genre";
+// export const connection = new Sequelize("postgres://postgress:1XjaIVI6Gk5T0WQ1LiRcsVLm0W2ueaTI@dpg-ch8ol74s3fvq1l0d03d0-a/gameshop",
+// {
+//     logging: false,
+//     native: false,
+//     dialect: 'postgres',    
+//     models: [
+//         Videogame,
+//         Genre, 
+//     ]
+// }
+// )
+// async function connectionDB() {
+//     try {
+//         await connection.sync( { alter: true } )
+//     } catch (error) {
+//         console.log((error));        
+//     }
+// }
+// export default connectionDB

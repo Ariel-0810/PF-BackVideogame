@@ -12,7 +12,7 @@ if( !name || !released ) {
 } else {
     next();
 }
-}
+};
 
 router.get("/getAllGames", getAllGames);
 router.get("/getAllGames/:id", getGameById );
@@ -20,7 +20,6 @@ router.post("/createBulkDB", createBulkDB);
 router.post("/postNewGame", validate, postNewGame);
 router.delete("/deleteGame/", deleteGame);
 router.delete("/deleteGame/:id", deleteGame);
-
 
 
 export default router;

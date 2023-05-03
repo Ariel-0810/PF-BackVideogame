@@ -23,6 +23,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./src/app"));
+const db_1 = require("./src/db");
 const port = process.env.PORT || 3001;
-app_1.default.listen(app_1.default.get("port"));
-console.log('%s listening at ' + port); // eslint-disable-line no-console
+db_1.conection.conn.sync({ alter: true }).then(() => {
+    app_1.default.listen(port, () => {
+        console.log('%s listening at ' + port); // eslint-disable-line no-console
+    });
+});
